@@ -11,6 +11,7 @@ import com.jmajyo.cards.managers.CardApiManager;
 import com.jmajyo.cards.managers.DeckApiManager;
 import com.jmajyo.cards.model.Card;
 import com.jmajyo.cards.model.Deck;
+import com.squareup.picasso.Picasso;
 
 public class MainActivity extends AppCompatActivity {
     private TextView numberOfCardInDeck;
@@ -42,7 +43,8 @@ public class MainActivity extends AppCompatActivity {
                 cardApiManager.setListener(new CardApiManager.CardApiManagerNewCardListener() {
                     @Override
                     public void onNewCard(Card card) {
-
+                        Picasso.with(MainActivity.this).load(card.getImage()).placeholder(R.drawable.card_back_blue).into(cardView);
+                        numberOfCardInDeck.setText("" + card.getRemains());
                     }
                 });
                 cardApiManager.newCard(v.getContext(), deck);
