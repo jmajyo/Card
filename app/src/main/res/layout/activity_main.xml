@@ -15,7 +15,6 @@
         android:id="@+id/acttivity_main___cards_left_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
         android:textSize="50sp"
         tools:text="48 cards left!"
         android:gravity="center"
