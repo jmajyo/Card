@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                 cardApiManager.setListener(new CardApiManager.CardApiManagerNewCardListener() {
                     @Override
                     public void onNewCard(Card card) {
-                        Picasso.with(MainActivity.this).load(card.getImage()).placeholder(android.R.drawable.ic_menu_compass).into(cardView);
+                        Picasso.with(MainActivity.this).load(card.getImage()).placeholder(R.drawable.card_back_blue).into(cardView);
                         numberOfCardInDeck.setText("" + card.getRemains());
                     }
                 });
