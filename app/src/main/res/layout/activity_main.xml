@@ -20,4 +20,13 @@
         android:gravity="center"
         android:textColor="#FFC000"
         android:background="#a6050505"/>
+    <Button
+        android:id="@+id/activity_main___newDeck_button"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="New Deck"
+        android:textSize="40sp"
+        android:textColor="#FFC000"
+        android:layout_centerInParent="true"
+        android:background="00"/>
 </RelativeLayout>
