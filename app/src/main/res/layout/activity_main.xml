@@ -4,13 +4,27 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.jmajyo.cards.activities.MainActivity">
+    android:padding="0dp"
+    tools:context="com.jmajyo.cards.activities.MainActivity"
+    android:background="@drawable/card_back_blue">
+
+    <ImageView
+        android:id="@+id/activity_main___cards_image_final"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/card_back_blue"
+        android:padding="0dp"
+        android:layout_margin="0dp"
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/activity_main___cards_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/card_back_blue"/>
+        android:src="@drawable/card_back_blue"
+        android:padding="0dp"
+        android:layout_margin="0dp"
+        android:visibility="invisible"/>
     <TextView
         android:id="@+id/acttivity_main___cards_left_text"
         android:layout_width="match_parent"
@@ -20,4 +34,13 @@
         android:gravity="center"
         android:textColor="#FFC000"
         android:background="#a6050505"/>
+    <Button
+        android:id="@+id/activity_main___newDeck_button"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="New Deck"
+        android:textSize="40sp"
+        android:textColor="#FFC000"
+        android:layout_centerInParent="true"
+        android:background="#00FFFFFF"/>
 </RelativeLayout>
