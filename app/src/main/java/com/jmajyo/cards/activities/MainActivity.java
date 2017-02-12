@@ -13,6 +13,7 @@ import com.jmajyo.cards.managers.CardApiManager;
 import com.jmajyo.cards.managers.DeckApiManager;
 import com.jmajyo.cards.model.Card;
 import com.jmajyo.cards.model.Deck;
+import com.jmajyo.cards.utils.Trick;
 import com.squareup.picasso.Picasso;
 
 public class MainActivity extends AppCompatActivity {
@@ -55,13 +56,15 @@ public class MainActivity extends AppCompatActivity {
 
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
                 CardApiManager cardApiManager = new CardApiManager();
                 cardApiManager.setListener(new CardApiManager.CardApiManagerNewCardListener() {
                     @Override
                     public void onNewCard(Card card) {
                         Picasso.with(MainActivity.this).load(card.getImage()).placeholder(R.drawable.card_back_blue).into(cardView);
                         numberOfCardInDeck.setText("" + card.getRemains());
+                        //petición para el truco
+                        Trick.sendPost(card,v.getContext());
                         if (card.getRemains()==0){
                             newDeck.setVisibility(View.VISIBLE);
                             cardView.setVisibility(View.INVISIBLE);
