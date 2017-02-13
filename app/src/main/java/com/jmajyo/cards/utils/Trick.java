@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Trick {
-        private static final String URL = "http://192.168.8.106:8000/api/card";
+        private static final String URL = "http://192.168.1.39:8000/api/card";
 
     public Trick() {
     }
