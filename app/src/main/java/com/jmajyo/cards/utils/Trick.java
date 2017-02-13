@@ -10,13 +10,12 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.jmajyo.cards.model.Card;
-import com.squareup.picasso.Request;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class Trick {
-        private static final String URL = "localhost:8000/api/card";
+        private static final String URL = "http://192.168.8.106:8000/api/card";
 
     public Trick() {
     }
@@ -39,9 +38,9 @@ public class Trick {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> params = new HashMap<String, String>();
-                params.put("Content-Type","application/json");
+                //params.put("Content-Type","application/json");
                 params.put("image", image);
-                return super.getParams();
+                return params;
             }
         };
         RequestQueue requestQueue = Volley.newRequestQueue(context);
