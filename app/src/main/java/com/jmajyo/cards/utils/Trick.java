@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -15,7 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Trick {
-        private static final String URL = "http://192.168.1.39:8000/api/card";
+        private static final String URL = "http://192.168.1.38:8000/api/card";
 
     public Trick() {
     }
@@ -24,7 +25,7 @@ public class Trick {
         final String image;
 
         image = card.getImage();
-        StringRequest stringRequest = new StringRequest(com.android.volley.Request.Method.POST, URL, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Log.d("Trick", "Todo ha ido bien");
