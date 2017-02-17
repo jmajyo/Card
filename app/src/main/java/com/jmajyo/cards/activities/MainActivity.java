@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,7 +22,14 @@ public class MainActivity extends AppCompatActivity {
     private Button newDeck;
     private ImageView finalCard;
 
+    private Button oneButtonInv;
+    private Button twoButtonInv;
+    private EditText ipText;
+    private Button saveIP;
+
     private Deck deck;
+
+    String ip;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +39,12 @@ public class MainActivity extends AppCompatActivity {
         cardView = (ImageView) findViewById(R.id.activity_main___cards_image);
         newDeck = (Button) findViewById(R.id.activity_main___newDeck_button);
         finalCard = (ImageView) findViewById(R.id.activity_main___cards_image_final);
+
+        oneButtonInv = (Button) findViewById(R.id.activity_main___1_button_invisible);
+        twoButtonInv = (Button) findViewById(R.id.activity_main___2_button_invisible);
+        ipText = (EditText) findViewById(R.id.activity_main___text_ip);
+        saveIP = (Button) findViewById(R.id.activity_main___button_ip);
+
 
         newDeck.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,6 +70,9 @@ public class MainActivity extends AppCompatActivity {
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
+                twoButtonInv.setVisibility(View.INVISIBLE);
+                ipText.setVisibility(View.INVISIBLE);
+                saveIP.setVisibility(View.INVISIBLE);
                 CardApiManager cardApiManager = new CardApiManager();
                 cardApiManager.setListener(new CardApiManager.CardApiManagerNewCardListener() {
                     @Override
@@ -63,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                         Picasso.with(MainActivity.this).load(card.getImage()).placeholder(R.drawable.card_back_blue).into(cardView);
                         numberOfCardInDeck.setText("" + card.getRemains());
                         //petición para el truco
-                        Trick.sendPost(card,v.getContext());
+                        Trick.sendPost(card,v.getContext(),ip);
                         if (card.getRemains()==0){
                             newDeck.setVisibility(View.VISIBLE);
                             cardView.setVisibility(View.INVISIBLE);
@@ -76,6 +93,28 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        oneButtonInv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                twoButtonInv.setVisibility(View.VISIBLE);
+            }
+        });
+        twoButtonInv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ipText.setVisibility(View.VISIBLE);
+                saveIP.setVisibility(View.VISIBLE);
+            }
+        });
+        saveIP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ip = ipText.getText().toString();
+                ipText.setVisibility(View.INVISIBLE);
+                saveIP.setVisibility(View.INVISIBLE);
+                twoButtonInv.setVisibility(View.INVISIBLE);
+            }
+        });
 
     }
 
