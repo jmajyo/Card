@@ -16,13 +16,22 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Trick {
-        private static final String URL = "http://192.168.1.38:8000/api/card";
+        private static final String BASEURL = "http://";
+        private static final String FINURL = "/api/card";
+        private static final String dirIp ="192.168.0.121:800";
 
     public Trick() {
     }
 
-    public static void sendPost(Card card, Context context){
+    public static void sendPost(Card card, Context context, String ip){
         final String image;
+        String URL;
+        if(ip==null || ip=="")
+        {
+            URL=BASEURL+dirIp+FINURL;
+        }else{
+            URL=BASEURL+ip+FINURL;
+        }
 
         image = card.getImage();
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {

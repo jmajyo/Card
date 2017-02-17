@@ -43,4 +43,44 @@
         android:textColor="#FFC000"
         android:layout_centerInParent="true"
         android:background="#00FFFFFF"/>
+    <Button
+        android:id="@+id/activity_main___1_button_invisible"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:background="#01050505"/>
+    <Button
+        android:id="@+id/activity_main___2_button_invisible"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:visibility="invisible"
+        android:background="#00050505"/>
+    <EditText
+        android:id="@+id/activity_main___text_ip"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:textSize="33sp"
+        android:textStyle="bold|italic"
+        android:textColor="#c4c119"
+        android:textColorHint="#c4c119"
+        android:hint="format x.x.x.x:x"
+        android:gravity="center"
+        android:layout_marginTop="150dp"
+        android:layout_marginBottom="20dp"
+        android:background="#b9151414"
+        android:visibility="invisible"
+        />
+    <Button
+        android:id="@+id/activity_main___button_ip"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="Save IP"
+        android:textStyle="bold"
+        android:layout_marginTop="80dp"
+        android:layout_below="@id/activity_main___text_ip"
+        android:layout_centerHorizontal="true"
+        android:visibility="invisible"
+        />
 </RelativeLayout>
