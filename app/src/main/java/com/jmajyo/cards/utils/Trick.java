@@ -26,12 +26,25 @@ public class Trick {
     public static void sendPost(Card card, Context context, String ip){
         final String image;
         String URL;
+        String URLDelete;
         if(ip==null || ip=="")
         {
             URL=BASEURL+dirIp+FINURL;
         }else{
             URL=BASEURL+ip+FINURL;
         }
+        URLDelete=URL+"/1";
+        StringRequest stringRequestDel = new StringRequest(Request.Method.DELETE, URLDelete, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.d("Trick", "Todo ha ido bien BORRANDO");
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("Trick", "Algo ha ido mal BORRANDO" + error);
+            }
+        });
 
         image = card.getImage();
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
@@ -50,11 +63,18 @@ public class Trick {
                 Map<String,String> params = new HashMap<String, String>();
                 //params.put("Content-Type","application/json");
                 params.put("image", image);
+                params.put("id", "1");
                 return params;
             }
         };
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         requestQueue.add(stringRequest);
+
+        RequestQueue requestQueue1 = Volley.newRequestQueue(context);
+        requestQueue1.add(stringRequestDel);
         Log.d("Trick", stringRequest.toString());
+
+
+
     }
 }
