@@ -55,12 +55,12 @@ public class MainActivity extends AppCompatActivity {
                     public void onNewDeck(Deck deckFromJson) {
                         numberOfCardInDeck.setText("" + deckFromJson.getRemaining());
                         deck = deckFromJson;
+                        cardView.setVisibility(View.VISIBLE);
                     }
                 });
                 apiManager.newDeck(v.getContext());
                 finalCard.setVisibility(View.INVISIBLE);//No hace esto porque??
                 newDeck.setVisibility(View.INVISIBLE);
-                cardView.setVisibility(View.VISIBLE);
                 cardView.setImageResource(R.drawable.card_back_blue); //tengo que poner esto porque finalCard no se hace invisible
 
             }
