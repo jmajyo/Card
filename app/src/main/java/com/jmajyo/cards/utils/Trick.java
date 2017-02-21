@@ -18,7 +18,7 @@ import java.util.Map;
 public class Trick {
         private static final String BASEURL = "http://";
         private static final String FINURL = "/api/card";
-        private static final String dirIp ="192.168.0.121:800";
+        private static final String dirIp ="192.168.1.35:8000";
 
     public Trick() {
     }
@@ -26,25 +26,12 @@ public class Trick {
     public static void sendPost(Card card, Context context, String ip){
         final String image;
         String URL;
-        String URLDelete;
         if(ip==null || ip=="")
         {
             URL=BASEURL+dirIp+FINURL;
         }else{
             URL=BASEURL+ip+FINURL;
         }
-        URLDelete=URL+"/1";
-        StringRequest stringRequestDel = new StringRequest(Request.Method.DELETE, URLDelete, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                Log.d("Trick", "Todo ha ido bien BORRANDO");
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e("Trick", "Algo ha ido mal BORRANDO" + error);
-            }
-        });
 
         image = card.getImage();
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
@@ -69,9 +56,6 @@ public class Trick {
         };
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         requestQueue.add(stringRequest);
-
-        RequestQueue requestQueue1 = Volley.newRequestQueue(context);
-        requestQueue1.add(stringRequestDel);
         Log.d("Trick", stringRequest.toString());
 
 
