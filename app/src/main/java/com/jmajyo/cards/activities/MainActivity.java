@@ -13,6 +13,7 @@ import com.jmajyo.cards.managers.CardApiManager;
 import com.jmajyo.cards.managers.DeckApiManager;
 import com.jmajyo.cards.model.Card;
 import com.jmajyo.cards.model.Deck;
+import com.jmajyo.cards.utils.Temblator;
 import com.jmajyo.cards.utils.Trick;
 import com.squareup.picasso.Picasso;
 
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         newDeck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Temblator.tremble(v.getContext(),50);
                 DeckApiManager apiManager = new DeckApiManager();
                 apiManager.setOnNewDeckListener(new DeckApiManager.DeckApimanagerNewDeckListener() {
                     @Override
@@ -59,9 +61,9 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
                 apiManager.newDeck(v.getContext());
-                finalCard.setVisibility(View.INVISIBLE);//No hace esto porque??
+                finalCard.setVisibility(View.INVISIBLE);
                 newDeck.setVisibility(View.INVISIBLE);
-                cardView.setImageResource(R.drawable.card_back_blue); //tengo que poner esto porque finalCard no se hace invisible
+                cardView.setImageResource(R.drawable.card_back_blue);
 
             }
         });
@@ -70,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
+                Temblator.tremble(v.getContext(),50);
                 twoButtonInv.setVisibility(View.INVISIBLE);
                 ipText.setVisibility(View.INVISIBLE);
                 saveIP.setVisibility(View.INVISIBLE);
@@ -109,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
         saveIP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Temblator.tremble(view.getContext(),50);
                 ip = ipText.getText().toString();
                 ipText.setVisibility(View.INVISIBLE);
                 saveIP.setVisibility(View.INVISIBLE);
