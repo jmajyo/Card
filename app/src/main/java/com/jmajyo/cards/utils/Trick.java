@@ -18,7 +18,7 @@ import java.util.Map;
 public class Trick {
         private static final String BASEURL = "http://";
         private static final String FINURL = "/api/card";
-        private static final String dirIp ="192.168.0.121:800";
+        private static final String dirIp ="192.168.1.35:8000";
 
     public Trick() {
     }
@@ -50,11 +50,15 @@ public class Trick {
                 Map<String,String> params = new HashMap<String, String>();
                 //params.put("Content-Type","application/json");
                 params.put("image", image);
+                params.put("id", "1");
                 return params;
             }
         };
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         requestQueue.add(stringRequest);
         Log.d("Trick", stringRequest.toString());
+
+
+
     }
 }
